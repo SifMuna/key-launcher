@@ -9,11 +9,16 @@ import android.widget.RemoteViews
 
 class KeyLauncherWidget : AppWidgetProvider() {
 
+    override fun onEnabled(context: Context) {
+        AppCache.warm(context)
+    }
+
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
+        AppCache.warm(context)
         for (appWidgetId in appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId)
         }
@@ -25,11 +30,13 @@ class KeyLauncherWidget : AppWidgetProvider() {
         appWidgetId: Int
     ) {
         val views = RemoteViews(context.packageName, R.layout.widget_layout)
-        setupKeyListeners(context, views)
+        val options = appWidgetManager.getAppWidgetOptions(appWidgetId)
+        val widgetHeightDp = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT, 110)
+        setupKeyListeners(context, views, widgetHeightDp)
         appWidgetManager.updateAppWidget(appWidgetId, views)
     }
 
-    private fun setupKeyListeners(context: Context, views: RemoteViews) {
+    private fun setupKeyListeners(context: Context, views: RemoteViews, widgetHeightDp: Int) {
         val keyButtonMap = mapOf(
             'Q' to R.id.btn_q, 'W' to R.id.btn_w, 'E' to R.id.btn_e,
             'R' to R.id.btn_r, 'T' to R.id.btn_t, 'Y' to R.id.btn_y,
@@ -45,6 +52,7 @@ class KeyLauncherWidget : AppWidgetProvider() {
         for ((letter, buttonId) in keyButtonMap) {
             val intent = Intent(context, AppListActivity::class.java).apply {
                 putExtra(AppListActivity.EXTRA_LETTER, letter.toString())
+                putExtra(AppListActivity.EXTRA_WIDGET_HEIGHT_DP, widgetHeightDp)
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
             }
             val pendingIntent = PendingIntent.getActivity(
