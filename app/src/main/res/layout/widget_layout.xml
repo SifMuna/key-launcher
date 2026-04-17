@@ -62,7 +62,7 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Space android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"/>
+        <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="#000000"/>
         <Button android:id="@+id/btn_a"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="A" android:textColor="#FFFFFF" android:background="#000000"
@@ -99,7 +99,7 @@
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="L" android:textColor="#FFFFFF" android:background="#000000"
             android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
-        <Space android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"/>
+        <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="#000000"/>
     </LinearLayout>
 
     <!-- Row 3: Z X C V B N M (7 keys, weight=2 each + 2 spacers weight=3 → total 20) -->
@@ -109,7 +109,7 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Space android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="3"/>
+        <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="3" android:background="#000000"/>
         <Button android:id="@+id/btn_z"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="Z" android:textColor="#FFFFFF" android:background="#000000"
@@ -138,7 +138,7 @@
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="M" android:textColor="#FFFFFF" android:background="#000000"
             android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
-        <Space android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="3"/>
+        <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="3" android:background="#000000"/>
     </LinearLayout>
 
 </LinearLayout>
