@@ -16,43 +16,43 @@
         <Button android:id="@+id/btn_q"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
             android:text="Q" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_w"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
             android:text="W" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_e"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
             android:text="E" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_r"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
             android:text="R" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_t"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
             android:text="T" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_y"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
             android:text="Y" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_u"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
             android:text="U" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_i"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
             android:text="I" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_o"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
             android:text="O" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_p"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
             android:text="P" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
     </LinearLayout>
 
     <!-- Row 2: A S D F G H J K L (9 keys, weight=2 each + 2 spacers weight=1 → total 20) -->
@@ -66,39 +66,39 @@
         <Button android:id="@+id/btn_a"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="A" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_s"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="S" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_d"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="D" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_f"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="F" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_g"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="G" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_h"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="H" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_j"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="J" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_k"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="K" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_l"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="L" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="#000000"/>
     </LinearLayout>
 
@@ -113,31 +113,31 @@
         <Button android:id="@+id/btn_z"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="Z" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_x"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="X" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_c"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="C" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_v"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="V" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_b"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="B" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_n"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="N" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <Button android:id="@+id/btn_m"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2"
             android:text="M" android:textColor="#FFFFFF" android:background="#000000"
-            android:textSize="13sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
+            android:textSize="18sp" android:padding="2dp" android:minWidth="0dp" android:minHeight="0dp"/>
         <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="3" android:background="#000000"/>
     </LinearLayout>
 
