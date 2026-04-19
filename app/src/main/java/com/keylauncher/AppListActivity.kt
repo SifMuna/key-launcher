@@ -3,6 +3,7 @@ package com.keylauncher
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -37,6 +38,14 @@ class AppListActivity : AppCompatActivity() {
 
         // Tap the transparent backdrop to dismiss
         findViewById<View>(R.id.backdrop).setOnClickListener { finish() }
+
+        // Match the keyboard height to the actual widget height on the home screen
+        val widgetHeightDp = intent.getIntExtra(EXTRA_WIDGET_HEIGHT_DP, 0)
+        if (widgetHeightDp > 0) {
+            val keyboard = findViewById<View>(R.id.keyboard_container)
+            val px = (widgetHeightDp * resources.displayMetrics.density + 0.5f).toInt()
+            keyboard.layoutParams = (keyboard.layoutParams as ViewGroup.LayoutParams).also { it.height = px }
+        }
 
         setupKeyboardListeners()
 
