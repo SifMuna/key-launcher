@@ -9,8 +9,19 @@ import android.widget.RemoteViews
 
 class KeyLauncherWidget : AppWidgetProvider() {
 
+    companion object {
+        const val ACTION_REFRESH_CACHE = "com.keylauncher.ACTION_REFRESH_CACHE"
+    }
+
     override fun onEnabled(context: Context) {
         AppCache.warm(context)
+    }
+
+    override fun onReceive(context: Context, intent: Intent) {
+        super.onReceive(context, intent)
+        if (intent.action == ACTION_REFRESH_CACHE) {
+            AppCache.forceRefresh(context.applicationContext)
+        }
     }
 
     override fun onUpdate(
@@ -63,5 +74,17 @@ class KeyLauncherWidget : AppWidgetProvider() {
             )
             views.setOnClickPendingIntent(buttonId, pendingIntent)
         }
+
+        // Refresh button: broadcasts to this receiver to force a cache rebuild
+        val refreshIntent = Intent(context, KeyLauncherWidget::class.java).apply {
+            action = ACTION_REFRESH_CACHE
+        }
+        val refreshPendingIntent = PendingIntent.getBroadcast(
+            context,
+            0,
+            refreshIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        views.setOnClickPendingIntent(R.id.btn_refresh, refreshPendingIntent)
     }
 }

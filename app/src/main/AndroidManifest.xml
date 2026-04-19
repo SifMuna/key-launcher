@@ -15,6 +15,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.keylauncher.ACTION_REFRESH_CACHE" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"

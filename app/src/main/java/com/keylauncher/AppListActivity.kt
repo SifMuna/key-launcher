@@ -1,16 +1,11 @@
 package com.keylauncher
 
 import android.content.Intent
-import android.graphics.Rect
 import android.os.Bundle
-import android.view.MotionEvent
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -21,80 +16,93 @@ class AppListActivity : AppCompatActivity() {
         const val EXTRA_WIDGET_HEIGHT_DP = "widget_height_dp"
     }
 
+    private var currentLetter = "A"
+    private var cachedApps: List<AppInfo>? = null
+
+    private lateinit var titleText: TextView
+    private lateinit var noAppsText: TextView
+    private lateinit var recyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Draw edge-to-edge so we can position the panel behind the nav bar correctly.
         WindowCompat.setDecorFitsSystemWindows(window, false)
-
         setContentView(R.layout.activity_app_list)
 
-        val letter = intent.getStringExtra(EXTRA_LETTER) ?: run { finish(); return }
+        currentLetter = intent.getStringExtra(EXTRA_LETTER) ?: run { finish(); return }
 
-        val widgetHeightPx = (intent.getIntExtra(EXTRA_WIDGET_HEIGHT_DP, 110)
-                * resources.displayMetrics.density).toInt()
+        titleText = findViewById(R.id.title_text)
+        noAppsText = findViewById(R.id.no_apps_text)
+        recyclerView = findViewById(R.id.recycler_view)
 
-        // Shift the panel up by (nav bar height + widget height) so it sits just above the widget.
-        val panel = findViewById<View>(R.id.panel)
-        ViewCompat.setOnApplyWindowInsetsListener(panel) { v, insets ->
-            val navBar = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
-            val lp = v.layoutParams as FrameLayout.LayoutParams
-            lp.bottomMargin = navBar + widgetHeightPx
-            v.layoutParams = lp
-            insets
-        }
-
+        // Tap the transparent backdrop to dismiss
         findViewById<View>(R.id.backdrop).setOnClickListener { finish() }
-        panel.setOnClickListener { /* consume — prevents backdrop listener from firing */ }
 
-        findViewById<TextView>(R.id.title_text).text = letter
+        setupKeyboardListeners()
 
-        val noAppsText = findViewById<TextView>(R.id.no_apps_text)
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-
-        fun showResults(all: List<AppInfo>) {
-            val filtered = all.filter { it.name.startsWith(letter, ignoreCase = true) }
-            if (filtered.isEmpty()) {
-                recyclerView.visibility = View.GONE
-                noAppsText.visibility = View.VISIBLE
-                noAppsText.text = getString(R.string.no_apps_found, letter)
-            } else {
-                noAppsText.visibility = View.GONE
-                recyclerView.visibility = View.VISIBLE
-                recyclerView.layoutManager = LinearLayoutManager(this)
-                recyclerView.adapter = AppAdapter(filtered) { app ->
-                    packageManager.getLaunchIntentForPackage(app.packageName)?.let { launch ->
-                        launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(launch)
-                        finish()
-                    }
-                }
-            }
-        }
-
+        // Load and display initial results
         val cached = AppCache.get()
         if (cached != null) {
+            cachedApps = cached
             showResults(cached)
-            AppCache.warm(this)  // refresh in background if TTL expired
+            AppCache.warm(this)
         } else {
-            // Cache cold (first ever tap): load off the main thread, then display.
             Thread {
                 val apps = AppCache.getOrLoad(this)
+                cachedApps = apps
                 runOnUiThread { showResults(apps) }
             }.start()
         }
     }
 
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        if (event.action == MotionEvent.ACTION_DOWN) {
-            val panel = findViewById<View>(R.id.panel)
-            val rect = Rect()
-            panel.getGlobalVisibleRect(rect)
-            if (!rect.contains(event.rawX.toInt(), event.rawY.toInt())) {
-                finish()
-                return true
+    private fun showResults(all: List<AppInfo>) {
+        titleText.text = currentLetter
+        val filtered = all.filter { it.name.startsWith(currentLetter, ignoreCase = true) }
+        if (filtered.isEmpty()) {
+            recyclerView.visibility = View.GONE
+            noAppsText.visibility = View.VISIBLE
+            noAppsText.text = getString(R.string.no_apps_found, currentLetter)
+        } else {
+            noAppsText.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            recyclerView.adapter = AppAdapter(filtered) { app ->
+                packageManager.getLaunchIntentForPackage(app.packageName)?.let { launch ->
+                    launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(launch)
+                    finish()
+                }
             }
         }
-        return super.onTouchEvent(event)
+    }
+
+    private fun setupKeyboardListeners() {
+        val keyButtonMap = mapOf(
+            "Q" to R.id.btn_q, "W" to R.id.btn_w, "E" to R.id.btn_e,
+            "R" to R.id.btn_r, "T" to R.id.btn_t, "Y" to R.id.btn_y,
+            "U" to R.id.btn_u, "I" to R.id.btn_i, "O" to R.id.btn_o,
+            "P" to R.id.btn_p, "A" to R.id.btn_a, "S" to R.id.btn_s,
+            "D" to R.id.btn_d, "F" to R.id.btn_f, "G" to R.id.btn_g,
+            "H" to R.id.btn_h, "J" to R.id.btn_j, "K" to R.id.btn_k,
+            "L" to R.id.btn_l, "Z" to R.id.btn_z, "X" to R.id.btn_x,
+            "C" to R.id.btn_c, "V" to R.id.btn_v, "B" to R.id.btn_b,
+            "N" to R.id.btn_n, "M" to R.id.btn_m
+        )
+
+        for ((letter, buttonId) in keyButtonMap) {
+            findViewById<View>(buttonId).setOnClickListener {
+                currentLetter = letter
+                cachedApps?.let { showResults(it) }
+            }
+        }
+
+        // Refresh: force a full rebuild of the app list, then redisplay
+        findViewById<View>(R.id.btn_refresh).setOnClickListener {
+            AppCache.forceRefresh(this) {
+                val apps = AppCache.get() ?: return@forceRefresh
+                cachedApps = apps
+                runOnUiThread { showResults(apps) }
+            }
+        }
     }
 }
